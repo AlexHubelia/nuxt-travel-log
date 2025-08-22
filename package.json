@@ -7,25 +7,11 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepare": "husky"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxt/eslint": "1.9.0",
     "nuxt": "3.16.0",
-    "vue": "3.5.18",
+    "vue": "3.5.13",
     "vue-router": "4.5.0"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^5.2.1",
-    "eslint": "^9.33.0",
-    "eslint-plugin-format": "^1.0.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.1.5"
-  },
-  "lint-staged": {
-    "*": "pnpm lint"
   }
 }
