@@ -21,4 +21,5 @@ jobs:
         with:
           node-version: 22.x
       - run: pnpm install
+      - run: pnpm run postinstall
       - run: pnpm lint
