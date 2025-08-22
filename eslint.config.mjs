@@ -1,7 +1,13 @@
 import antfu from "@antfu/eslint-config";
 
-// @ts-check
-import withNuxt from "./.nuxt/eslint.config.mjs";
+let withNuxt;
+try {
+  withNuxt = (await import("./.nuxt/eslint.config.mjs")).default;
+}
+catch {
+  // Fallback if .nuxt/eslint.config.mjs doesn't exist
+  withNuxt = config => config;
+}
 
 // TODO: add tailwindcss plugin
 
