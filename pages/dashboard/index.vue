@@ -1,3 +1,60 @@
+<script setup lang="ts">
+const isSidebarOpen = ref(false);
+
+onMounted(() => {
+  isSidebarOpen.value = localStorage.getItem("isSidebarOpen") === "true";
+});
+
+function toggleSidebar() {
+  isSidebarOpen.value = !isSidebarOpen.value;
+  localStorage.setItem("isSidebarOpen", isSidebarOpen.value.toString());
+}
+</script>
+
 <template>
-  <h1>You are logged in!</h1>
+  <div class="flex-1 flex">
+    <div :class="{ 'w-64': isSidebarOpen, 'w-16': !isSidebarOpen }" class="bg-base-100 transition-all duration-300">
+      <div
+        class="flex hover:cursor-pointer hover:bg-base-300 p-2"
+        :class="{ 'justify-center': !isSidebarOpen, 'justify-end': isSidebarOpen }"
+        @click="toggleSidebar"
+      >
+        <Icon
+          v-if="isSidebarOpen"
+          name="tabler:chevron-left"
+          size="32"
+        />
+        <Icon
+          v-else
+          name="tabler:chevron-right"
+          size="32"
+        />
+      </div>
+      <div class="flex flex-col ">
+        <SidebarButton
+          :show-label="isSidebarOpen"
+          icon="tabler:map"
+          label="Locations"
+          href="/dashboard"
+        />
+        <SidebarButton
+          :show-label="isSidebarOpen"
+          icon="tabler:circle-plus-filled"
+          label="Add Location"
+          href="/dashboard/add"
+        />
+        <div class="divider" />
+        <SidebarButton
+          :show-label="isSidebarOpen"
+          icon="tabler:logout-2"
+          label="Sign Out"
+          href="/sign-out"
+        />
+      </div>
+    </div>
+    <div class="flex-1 " />
+  </div>
 </template>
+
+<style scoped>
+</style>
